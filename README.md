@@ -24,22 +24,59 @@ This repository contains the files necessary to configure and operate a multi-ro
 ### Repository Cloning
 
 ```bash
+# Create the workspace and navigate to the src directory
 mkdir -p ~/turtlebot3_ws/src
 cd ~/turtlebot3_ws/src
-git clone <REPOSITORY_URL>
+
+# Clone the repository from GitHub
+git clone https://github.com/PachiElCreador/Multi-Turtlebot-ROS2.git -b main
+
+# Build the workspace
 cd ~/turtlebot3_ws
 colcon build --symlink-install
-source install/setup.bash
+```
+### Configure bashrc
+#### Edit the bashrc file to add sourcing and environment variables
+```bash
+gedit ~/.bashrc
 ```
 
-## Key Files
+#### After gedit opens, paste the following lines at the end of the document:
+```bash
+# Configure ROS 2 Humble
+source /opt/ros/humble/setup.bash
 
-### 1. **`turtlebot3_house.launch.py`**
+# Configure Gazebo
+. /usr/share/gazebo/setup.sh
+
+# Configure the TurtleBot3 workspace
+source ~/turtlebot3_ws/install/setup.bash
+
+# Configure TurtleBot3-specific variables
+export ROS_DOMAIN_ID=30 # TURTLEBOT3
+export TURTLEBOT3_MODEL=burger
+
+# Gazebo executables
+export GAZEBO_SERVER_EXECUTABLE=/usr/bin/gzserver
+export GAZEBO_CLIENT_EXECUTABLE=/usr/bin/gzclient
+```
+#### After saving, run the following command to apply the changes:
+```bash
+source ~/.bashrc
+```
+This will ensure that the workspace, Gazebo, and TurtleBot3 configurations are loaded in every new terminal session.
+
+## Key Files
+```plaintext
+/home/user/turtlebot3_ws/src/turtlebot3_simulations/turtlebot3_gazebo/launch
+```
+
+### 1. **`multi_tb.launch.py`**
 This file launches the simulation in Gazebo and spawns multiple TurtleBot3 robots.
 
 **Purpose and Configuration:**
 - Implements namespaces to separate robots.
-- Uses `robot_state_publisher` and `spawn_entity.py` to initialize each robot.
+- Uses `robot_state_publisher` and `spawn_entity.py` to initialize each robot as individual nodes.
 
 ### 2. **`slam_cart.launch.py`**
 A modified file based on Cartographer to attempt SLAM with a specific namespace.
@@ -51,19 +88,15 @@ A modified file based on Cartographer to attempt SLAM with a specific namespace.
 ### 3. **`occupancy_grid.launch.py`**
 Node that generates a map based on Cartographer data.
 
-**Purpose:**
-- Attempts to remap topics to the corresponding namespace.
-- Ensures the map is published within the desired namespace.
-
-### 4. **`src`**
+### 4. **`turtlebot3_gazebo`**
 This directory contains the original and modified files for the TurtleBot3 simulation.
 
 ```plaintext
-src/
+home/user/turtlebot3_ws/src/
 |- turtlebot3_simulations/
    |- turtlebot3_gazebo/
       |- launch/
-         |- turtlebot3_house.launch.py
+         |- multi_tb.launch.py
          |- slam_cart.launch.py
          |- occupancy_grid.launch.py
       |- urdf/
@@ -74,10 +107,10 @@ src/
 
 ### 1. Multi-Robot Simulation
 - **Status:** Completed.
-- **Details:** Successfully spawned two robots (`tb1` and `tb2`) in Gazebo with independent namespace configurations.
+- **Details:** Successfully spawned two and more robots (`tb1` and `tb2`) in Gazebo with independent namespace configurations.
 - **Command:**
   ```bash
-  ros2 launch turtlebot3_gazebo turtlebot3_house.launch.py
+  ros2 launch turtlebot3_gazebo multi_tb.launch.py
   ```
 
 ### 2. SLAM Integration with Cartographer
@@ -92,6 +125,11 @@ src/
   ```bash
   ros2 run turtlebot3_teleop teleop_keyboard --ros-args -r /cmd_vel:=/tb2/cmd_vel
   ```
+- **Autonomous driving:**
+  ```bash
+  ros2 run turtlebot3_gazebo turtlebot3_drive --ros-args -r /cmd_vel:=/tb1/cmd_vel
+  ```
+
 - **Verify transformations:**
   ```bash
   ros2 run tf2_tools view_frames
