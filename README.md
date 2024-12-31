@@ -150,7 +150,7 @@ home/user/turtlebot3_ws/src/
 - **Difficulty:** Medium 
 - **Relevance:** High 
 
-#### 4. Implement Elena and Jarouss' MPC together with navigation
+#### 4. Implement MPC together with navigation
 - **Difficulty:** Probably Medium
 - **Relevance:** High 
 
