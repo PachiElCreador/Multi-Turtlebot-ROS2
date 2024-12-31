@@ -87,6 +87,9 @@ src/
   ```bash
   ros2 run turtlebot3_teleop teleop_keyboard --ros-args -r /cmd_vel:=/tb1/cmd_vel
   ```
+  ```bash
+  ros2 run turtlebot3_teleop teleop_keyboard --ros-args -r /cmd_vel:=/tb2/cmd_vel
+  ```
 - **Verify transformations:**
   ```bash
   ros2 run tf2_tools view_frames
@@ -95,23 +98,23 @@ src/
 ## Next Steps 
 ### Prioritized
 
-## 1. Resolve issues with `imu_link` in Cartographer
+#### 1. Resolve issues with `imu_link` in Cartographer
 - **Difficulty:** Medium (1-4 weeks)  
 - **Relevance:** High
 
-## 2. Validate `tf` transformations between `base_link`, `odom`, and `map`
+#### 2. Validate `tf` transformations between `base_link`, `odom`, and `map`
 - **Difficulty:** Medium  
 - **Relevance:** High 
 
-## 3. Complete mapping in `rviz` and integrate navigation
+#### 3. Complete mapping in `rviz` and integrate navigation
 - **Difficulty:** Medium 
 - **Relevance:** High 
 
-## 4. Implement Elena and Jarouss' MPC together with navigation
+#### 4. Implement Elena and Jarouss' MPC together with navigation
 - **Difficulty:** Probably Medium
 - **Relevance:** High 
 
-## 5. Move from simulation to physical implementation with 2+ TurtleBots
+#### 5. Move from simulation to physical implementation with 2+ TurtleBots
 - **Difficulty:** Low-Medium  
 - **Relevance:** Medium-High
 
@@ -119,11 +122,11 @@ src/
 
 ### Optional Tasks
 
-## 6. Integrate all necessary components into a single launch file
+#### 6. Integrate all necessary components into a single launch file
 - **Difficulty:** Low-Medium
 - **Relevance:** Medium (would simplify operations and enhance project reproducibility)  
 
-## 7. Port the project to C++ for scalability
+#### 7. Port the project to C++ for scalability
 - **Difficulty:** High
 - **Relevance:** Low (not critical for immediate success but useful for larger projects)  
 
