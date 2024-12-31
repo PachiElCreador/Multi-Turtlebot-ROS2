@@ -13,8 +13,9 @@ This repository contains the files necessary to configure and operate a multi-ro
 ## Workspace Setup
 
 ### Prerequisites
-- **ROS 2 Humble** installed.
-- **Gazebo 11** installed.
+- Ubuntu 22.04
+- [**ROS 2 Humble**](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html) installed.
+- [**Gazebo 11**](https://installati.one/install-gazebo-ubuntu-22-04/) installed (I have Gazebo 11.10.2).
 - TurtleBot3 dependencies:
   ```bash
   sudo apt install ros-humble-turtlebot3-msgs ros-humble-turtlebot3-gazebo ros-humble-cartographer
