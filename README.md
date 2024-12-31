@@ -4,10 +4,11 @@
 
 This repository contains the files necessary to configure and operate a multi-robot simulation using TurtleBot3 in ROS 2 Humble and Gazebo. The main objective is to implement a SLAM system for multiple robots in a simulated environment. The project includes:
 
-- **Simulation of TurtleBot3 robots** in a Gazebo world.
-- **Configuration of multiple namespaces** for each robot.
-- **Launch of state publisher and robot spawn nodes**.
-- Attempts to integrate **Cartographer** for simultaneous localization and mapping.
+- Simulation of TurtleBot3 robots in a Gazebo world.
+- Configuration of multiple namespaces for each robot.
+- Launch of state publisher and robot spawn nodes.
+- Modified to use multi_tb, enabling scalability to an arbitrary number of TurtleBots, each defined with exact positions.
+  Attempts to integrate **Cartographer** slam for simultaneous localization and mapping.
 
 ## Workspace Setup
 
