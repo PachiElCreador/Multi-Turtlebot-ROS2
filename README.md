@@ -1,4 +1,4 @@
-# TurtleBot3 Multi-Robot SLAM Project
+# Multi-Robot TurtleBot3 SLAM Simulation with ROS 2 and Cartographer (Approach)
 
 ## Project Description
 
@@ -16,16 +16,48 @@ This repository contains the files necessary to configure and operate a multi-ro
 - Ubuntu 22.04
 - [**ROS 2 Humble**](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html) installed.
 - [**Gazebo 11**](https://installati.one/install-gazebo-ubuntu-22-04/) installed (I have Gazebo 11.10.2).
-- TurtleBot3 dependencies:
-  ```bash
-  sudo apt install ros-humble-turtlebot3-msgs ros-humble-turtlebot3-gazebo ros-humble-cartographer
-  ```
+- [TurtleBot3 dependencies](https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/):
+  <details>
+    <summary>View turtlebot3 installation commands</summary>
+  
+    ```bash
+    # Dependent ROS2 Packages
+    sudo apt install ros-humble-gazebo-*
+    
+    sudo apt install ros-humble-cartographer
+    sudo apt install ros-humble-cartographer-ros
+  
+    sudo apt install ros-humble-navigation2
+    sudo apt install ros-humble-nav2-bringup
+    
+    # Install TurtleBot3 Packages
+    mkdir -p ~/turtlebot3_ws/src
+    cd ~/turtlebot3_ws/src/
+    git clone -b humble https://github.com/ROBOTIS-GIT/DynamixelSDK.git
+    git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
+    git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3.git
+    git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
+    sudo apt install python3-colcon-common-extensions
+  
+    # Install tb3 simulation package
+    git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
+  
+    # Build the workspace
+    cd ~/turtlebot3_ws
+    colcon build --symlink-install
+    echo 'source ~/turtlebot3_ws/install/setup.bash' >> ~/.bashrc
+    source ~/.bashrc
+    ```
+  
+  </details>
 
 ### Repository Cloning
 
 ```bash
-# Create the workspace and navigate to the src directory
+# Create the workspace if not created yet (you can change the name of the workspace)
 mkdir -p ~/turtlebot3_ws/src
+
+#Navigate to the workspace
 cd ~/turtlebot3_ws/src
 
 # Clone the repository from GitHub
@@ -105,6 +137,9 @@ home/user/turtlebot3_ws/src/
 
 ## Results Achieved
 
+![image](https://github.com/user-attachments/assets/673fedfe-a560-4490-95d4-3018b8f76411)
+
+
 ### 1. Multi-Robot Simulation
 - **Status:** Completed.
 - **Details:** Successfully spawned two and more robots (`tb1` and `tb2`) in Gazebo with independent namespace configurations.
@@ -178,6 +213,6 @@ For any questions or suggestions you can contact oscarlc10@outlook.com
 - [TurtleBot3 Official Documentation](https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/#overview)
 - [Cartographer ROS Integration](https://google-cartographer-ros.readthedocs.io/en/latest/)
 - [ROS 2 Cartographer](https://ros2-industrial-workshop.readthedocs.io/en/latest/_source/navigation/ROS2-Cartographer.html)
-
+- [Efficient Deployment and Operation of Multiple TurtleBot3 Robots in Gazebo](https://medium.com/@arshad.mehmood/efficient-deployment-and-operation-of-multiple-turtlebot3-robots-in-gazebos-f72f6a364620)
 
 
