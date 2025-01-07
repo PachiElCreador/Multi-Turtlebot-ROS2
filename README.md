@@ -152,7 +152,7 @@ home/user/turtlebot3_ws/src/
 - **Status:** Partial.
 - **Details:** While Cartographer was launched using `slam_cart.launch.py`, a map could not be displayed in `rviz` due to transformation issues (`imu_link`).
 
-### 3. Tested Commands
+### 3. Test Commands
 - **Move robots:**
   ```bash
   ros2 run turtlebot3_teleop teleop_keyboard --ros-args -r /cmd_vel:=/tb1/cmd_vel
