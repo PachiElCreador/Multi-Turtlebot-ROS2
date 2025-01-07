@@ -2,7 +2,7 @@
 
 ## Project Description
 
-This repository contains the files necessary to configure and operate a multi-robot simulation using TurtleBot3 in ROS 2 Humble and Gazebo. The main objective is to implement a SLAM system for multiple robots in a simulated environment. The project includes:
+This repository contains the files necessary to configure and operate a multi-robot simulation using TurtleBot3 in ROS 2 Humble and Gazebo. The main objective is to implement a an escalable simulation of multiple robots and use of the cartographer SLAM in a simulated environment. The project includes:
 
 - Simulation of TurtleBot3 robots in a Gazebo world.
 - Configuration of multiple namespaces for each robot.
