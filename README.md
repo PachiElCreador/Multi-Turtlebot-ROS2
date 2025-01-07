@@ -100,7 +100,7 @@ This will ensure that the workspace, Gazebo, and TurtleBot3 configurations are l
 
 ## Key Files
 ```plaintext
-/home/user/turtlebot3_ws/src/turtlebot3_simulations/turtlebot3_gazebo/launch
+/home/user/turtlebot3_ws/src/Multi-Turtlebot-ROS2/turtlebot3_simulations/turtlebot3_gazebo/launch
 ```
 
 ### 1. **`multi_tb.launch.py`**
@@ -124,7 +124,7 @@ Node that generates a map based on Cartographer data.
 This directory contains the original and modified files for the TurtleBot3 simulation.
 
 ```plaintext
-home/user/turtlebot3_ws/src/
+home/user/turtlebot3_ws/src/Multi-Turtlebot-ROS2
 |- turtlebot3_simulations/
    |- turtlebot3_gazebo/
       |- launch/
